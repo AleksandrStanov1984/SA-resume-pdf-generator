@@ -1,0 +1,44 @@
+const fs = require("fs");
+const path = require("path");
+const puppeteer = require("puppeteer");
+
+(async () => {
+    try {
+        // Папка для выходного PDF
+        const outputDir = path.resolve(__dirname, "../storage/pdf");
+        const pdfFile = path.join(outputDir, "resume-oleksandr-stanov.pdf");
+
+        // HTML-файл
+        const htmlPath = path.resolve(__dirname, "../as_sv.html");
+        const htmlUrl = "file://" + htmlPath.replace(/\\/g, "/");
+
+        // Создаём storage/pdf если нет
+        if (!fs.existsSync(outputDir)) {
+            fs.mkdirSync(outputDir, { recursive: true });
+        }
+
+        const browser = await puppeteer.launch({
+            headless: "new",
+            args: ["--no-sandbox", "--disable-setuid-sandbox"],
+        });
+
+        const page = await browser.newPage();
+        await page.goto(htmlUrl, { waitUntil: "networkidle0" });
+
+        await page.pdf({
+            path: pdfFile,
+            format: "A4",
+            printBackground: true,
+            margin: { top: "0mm", right: "0mm", bottom: "0mm", left: "0mm" }
+        });
+
+        await browser.close();
+
+        console.log("✅ PDF успешно создан:");
+        console.log("→ " + pdfFile);
+
+    } catch (err) {
+        console.error("❌ Ошибка создания PDF:", err);
+        process.exit(1);
+    }
+})();

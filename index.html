@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <title>Lebenslauf – Oleksandr Stanov</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+            background: #e5e7eb;
+            padding: 20px;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            background: #ffffff;
+            display: grid;
+            grid-template-columns: 30% 70%;
+            box-shadow: 0 0 8px rgba(0,0,0,0.15);
+        }
+
+        /* Левая колонка */
+        .sidebar {
+            background: #111827;
+            color: #f9fafb;
+            padding: 24px 24px 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .photo-wrapper {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .photo-wrapper img {
+            width: 100%;
+            border-radius: 16px; /* красивые закруглённые углы */
+            object-fit: cover;
+            box-shadow: 0 0 6px rgba(0,0,0,0.25);
+            border: 1px solid #ffffff; /* ← белая рамка */
+        }
+
+        .photo-caption-name {
+            font-size: 12px;
+            margin-top: 6px;
+        }
+
+        .photo-caption-role {
+            font-size: 11px;
+            color: #9ca3af;
+        }
+
+        .side-section-title {
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            color: #fbbf24;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .side-list {
+            font-size: 11px;
+            line-height: 1.6;
+            color: #e5e7eb;
+        }
+
+        .languages-list li {
+            list-style: none;
+            margin-bottom: 2px;
+        }
+
+        .social-link {
+            font-size: 10px;
+            word-break: break-all;
+        }
+
+        /* Правая колонка */
+        .content {
+            padding: 24px 32px 32px;
+            color: #111827;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .name-block {
+            max-width: 60%;
+        }
+
+        .name-block h1 {
+            font-size: 26px;
+            line-height: 1.1;
+            letter-spacing: 0.05em;
+        }
+
+        .name-block h1 span {
+            display: block;
+        }
+
+        .name-role {
+            font-size: 13px;
+            text-transform: uppercase;
+            color: #6b7280;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        .contact-block {
+            font-size: 10px;
+            text-align: right;
+            color: #4b5563;
+        }
+
+        .contact-block div {
+            margin-bottom: 2px;
+        }
+
+        .section-title {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin: 16px 0 8px;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 4px;
+        }
+
+        /* Таймлайн опыта */
+        .timeline {
+            position: relative;
+            margin-top: 4px;
+            padding-left: 18px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 4px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e5e7eb;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 16px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -1px;
+            top: 4px;
+            width: 8px;
+            height: 8px;
+            background: #fbbf24;
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 0 1px #d1d5db;
+        }
+
+        .timeline-meta {
+            font-size: 10px;
+            color: #6b7280;
+            margin-bottom: 1px;
+        }
+
+        .timeline-company {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+
+        .timeline-role {
+            font-size: 11px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 4px;
+        }
+
+        .timeline ul {
+            margin-left: 14px;
+            font-size: 10px;
+            line-height: 1.45;
+            color: #374151;
+        }
+
+        .timeline ul li {
+            margin-bottom: 2px;
+        }
+
+        .edu-item,
+        .course-item {
+            margin-bottom: 6px;
+            font-size: 10px;
+            line-height: 1.4;
+        }
+
+        .profile-text {
+            font-size: 10px;
+            line-height: 1.55;
+            color: #374151;
+            text-align: justify;
+        }
+
+        @media print {
+            body {
+                background: #ffffff;
+                padding: 0;
+            }
+            .page {
+                box-shadow: none;
+                margin: 0;
+            }
+        }
+
+        .skill-list {
+            list-style: none;
+            padding-left: 0;
+            margin-left: 0;
+        }
+
+        .skill-list li {
+            position: relative;
+            padding-left: 16px;
+            margin-bottom: 4px;
+            font-size: 11px;
+            line-height: 1.45;
+            color: #e5e7eb;
+        }
+
+        .skill-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 7px;
+            height: 7px;
+            background: #fbbf24; /* жёлтый */
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- Левая колонка -->
+    <aside class="sidebar">
+        <div class="photo-wrapper">
+
+            <!-- Поставь здесь путь к своей фотке -->
+            <img src="resources/img/photo_2022-12-14_22-06-32.jpg" alt="Oleksandr Stanov" />
+            <div class="photo-caption-name">Oleksandr Stanov</div>
+            <div class="photo-caption-role">Full Stack Entwickler</div>
+        </div>
+
+        <section>
+            <div class="side-section-title">FÄHIGKEITEN</div>
+            <ul class="skill-list">
+
+                <!-- Core Backend -->
+                <li>C# /.NET</li>
+                <li>C / C++</li>
+                <li>PHP</li>
+
+                <!-- Desktop -->
+                <li>WPF, WinForms</li>
+
+                <!-- Backend Web -->
+                <li>Laravel, Symfony, Filament</li>
+
+                <!-- Frontend -->
+                <li>Vue.js, Node.js</li>
+                <li>TypeScript, JavaScript, JQuery</li>
+                <li>HTML5, CSS3</li>
+
+                <!-- Datenbanken -->
+                <li>MySQL, MariaDB, SQL, MongoDB</li>
+
+                <!-- APIs -->
+                <li>REST API</li>
+
+                <!-- Industrie/IoT/Protokolle -->
+                <li>OPC UA, Modbus, CAN (MTS)</li>
+                <li>Hardware-Integration (Mess- & Steuergeräte)</li>
+
+                <!-- E-Commerce -->
+                <li>Shopware 5 / 6, Pluginentwicklung</li>
+
+                <!-- DevOps / Tools -->
+                <li>Git, GitLab, Docker, Jira</li>
+                <li>AWS</li>
+
+                <!-- OS -->
+                <li>OS Windows / Linux</li>
+
+                <!-- IDEs -->
+                <li>Visual Studio, PhpStorm, WebStorm, VS Code</li>
+
+                <!-- Agile -->
+                <li>Agile Methoden, Scrum</li>
+            </ul>
+        </section>
+
+        <section>
+            <div class="side-section-title">SPRACHEN</div>
+            <ul class="languages-list side-list">
+                <li>Ukrainisch – Muttersprache</li>
+                <li>Russisch – C2</li>
+                <li>Englisch – B2</li>
+                <li>Deutsch – B1</li>
+            </ul>
+        </section>
+
+        <section>
+            <div class="side-section-title">WEBSITES &amp; SOZIALE LINKS</div>
+            <div class="side-list">
+                <div>LinkedIn:</div>
+                <div class="social-link">
+                    https://www.linkedin.com/in/aleksandr-stanov-b21ab8181/
+                </div>
+                <div style="margin-top: 10px;">GitHub:</div>
+                <div class="social-link">
+                    <a href="https://github.com/AleksandrStanov1984"
+                       style="color: #e5e7eb; text-decoration: none;">
+                        github.com/AleksandrStanov1984
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="side-section-title">FÜHRERSCHEIN</div>
+            <div class="side-list">Führerscheinklasse B</div>
+        </section>
+    </aside>
+
+    <!-- Правая колонка -->
+    <main class="content">
+        <header class="top-header">
+            <div class="name-block">
+                <h1>
+                    <span>OLEKSANDR</span>
+                    <span>STANOV</span>
+                </h1>
+                <div class="name-role">Full Stack Entwickler</div>
+            </div>
+            <div class="contact-block">
+                <div>Rottweil 78628, Baden-Württemberg, Deutschland</div>
+                <div>Telefon: +49 173 5141827</div>
+                <div>E-Mail:
+                    <a href="mailto:aleksstanov84@gmail.com"
+                       style="color: #4b5563;">
+                    aleksstanov84@gmail.com
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Berufserfahrung -->
+        <section>
+            <div class="section-title">Berufserfahrung</div>
+            <div class="timeline">
+
+                <!-- GK Grain Capital -->
+                <article class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-meta">Odessa, Ukraine · Nov. 2019 – Feb. 2021</div>
+                    <div class="timeline-company">GK GRAIN CAPITAL</div>
+                    <div class="timeline-role">Software Ingenieur C/C++ / Systemintegrator</div>
+                    <ul>
+                        <li>Entwicklung und Wartung von Softwarelösungen zur Automatisierung von Handelsoperationen in der Landwirtschaft (Bestandsverwaltung, Logistikkoordination, Kundenbeziehungsmanagement).</li>
+                        <li>Entwicklung von Software für Getreidesilos auf Basis des „SMART“-Steuerungssystems mit Echtzeitüberwachung und Automatisierung von Lager- und Handhabungsprozessen.</li>
+                        <li>Integration von Softwareanwendungen in bestehende ERP- und CRM-Systeme zur Optimierung des Datenflusses und Verbesserung der betrieblichen Effizienz.</li>
+                        <li>Mitwirkung an der digitalen Transformation der Unternehmensprozesse und Entwicklung skalierbarer Lösungen für den Agrarsektor.</li>
+                    </ul>
+                </article>
+
+                <!-- Smartzone -->
+                <article class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-meta">Kyiv, Ukraine · Jan. 2021 – Juni 2021</div>
+                    <div class="timeline-company">SMARTZONE (SZ.UA)</div>
+                    <div class="timeline-role">Software Entwickler / E-Commerce Systems Engineer</div>
+                    <ul>
+                        <li>Entwicklung und Wartung von E-Commerce-Plattformen und Online-Shops.</li>
+                        <li>Erstellung und Vereinfachung von Datenbankstrukturen zur Verbesserung der Performance und Wartbarkeit.</li>
+                        <li>Entwicklung von APIs und Integrationen für Zahlungs- und Logistikdienstleister.</li>
+                        <li>Zusammenarbeit mit Marketing und Logistik zur Optimierung von Bestellprozessen und Kundenerlebnis.</li>
+                    </ul>
+                </article>
+
+                <!-- SOHONET -->
+                <article class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-meta">Odessa, Ukraine · Mai 2021 – Mai 2022</div>
+                    <div class="timeline-company">SOHONET</div>
+                    <div class="timeline-role">Software Developer</div>
+                    <ul>
+                        <li>Entwicklung und Wartung von Software zur Bereitstellung von Breitbandinternet, IP-Telefonie und digitalem Fernsehen.</li>
+                        <li>Integration von Backend-Systemen mit Netzwerkausrüstung zur Überwachung und Verwaltung von Glasfaser- (PON) und drahtloser Infrastruktur.</li>
+                        <li>Automatisierung interner Abläufe und Kundenservice-Workflows zur Steigerung der Servicezuverlässigkeit.</li>
+                        <li>Entwicklung von Tools für Bereitstellung, Abrechnung und Diagnostik zur Unterstützung von Privat- und Geschäftskunden.</li>
+                    </ul>
+                </article>
+
+                <!-- Arvenio -->
+                <article class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-meta">Rottweil, Deutschland · Aug. 2022 – Dez. 2023</div>
+                    <div class="timeline-company">ARVENIO MARKETING GMBH (arven.io)</div>
+                    <div class="timeline-role">Full Stack Entwickler</div>
+                    <ul>
+                        <li>Backend- und Frontend-Entwicklung eines komplexen DMS-Systems im christlichen Umfeld (PHP, Laravel, Vue.js, Quasar, AWS, SQL, MongoDB).</li>
+                        <li>Entwicklung von Shopware-Erweiterungen und Plug-ins im E-Commerce-Bereich, inkl. individueller Kundenanpassungen.</li>
+                        <li>Teilnahme an agilen Entwicklungsprozessen (SCRUM) und Arbeit in einem internationalen Entwicklerteam.</li>
+                        <li>Performance-Optimierung, Durchführung von Stresstests und kontinuierliche Verbesserung bestehender Lösungen.</li>
+                    </ul>
+                </article>
+
+                <!-- MRS Electronic -->
+                <article class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-meta">Rottweil, Deutschland · Mai 2024</div>
+                    <div class="timeline-company">MRS ELECTRONIC GMBH &amp; CO. KG</div>
+                    <div class="timeline-role">C# /.NET Entwickler</div>
+                    <ul>
+                        <li>PC-Programmierung in .NET C# und Arbeit mit verschiedenen Hardwareschnittstellen in Testsystemen für Leistungshalbleiter.</li>
+                        <li>Umgang mit dem CAN-MTS-Protokoll und Einbindung in bestehende Systeme.</li>
+                        <li>Implementierung von Modbus-Schnittstellen und Entwicklung einer Windows-Forms-Testapplikation für Messgeräte.</li>
+                        <li>Vorbereitung und Nutzung des OPC-UA-Kommunikationsprotokolls.</li>
+                        <li>Strukturierte und qualitätsorientierte Arbeit mit Git und GitLab.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <!-- Bildung -->
+        <section>
+            <div class="section-title">Bildung</div>
+            <div class="timeline">
+            <article class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-meta">Odessa, Ukraine</div>
+                <div class="timeline-company">IT-Akademie „STEP“, Odessa · 2017 - 2021</div>
+                <div class="edu-item">
+                    <ul>
+                        <li>Fakultät für Informatik – Softwareentwicklung (C / C++ , C# /.NET, PHP, OOP, SQL, Webtechnologien, Algorithmen und Datenstrukturen, Softwarearchitektur).</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-meta">Rottweil, Deutschland</div>
+                <div class="timeline-company">Shopware Entwickler Zertifizierung · 2022</div>
+                <div class="edu-item">
+                    <ul>
+                        <li>Erfolgreich abgeschlossene Zertifizierung als Shopware Developer (Shopware 5/6).</li>
+                    </ul>
+                </div>
+            </article>
+            </div>
+         </section>
+
+        <!-- Kurse -->
+        <section>
+            <div class="section-title">Kurse</div>
+            <div class="timeline">
+                <article class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-meta">Rottweil, Deutschland</div>
+                    <div class="timeline-company">Volkshochschule Rottweil · 2025</div>
+                    <div class="edu-item">
+                        <ul>
+                            <li>Deutschkurse (A2 / B1).</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-meta">Rottweil, Deutschland</div>
+                    <div class="timeline-company">Leben in Deutschland – Zertifikat · 2025</div>
+                    <div class="edu-item">
+                        <ul>
+                            <li>Erfolgreich bestandener Test „Leben in Deutschland“.</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Beruflicher Überblick -->
+        <section>
+            <div class="section-title">Beruflicher Überblick</div>
+            <p class="profile-text">
+                Ich bin ein erfahrener Full Stack und .NET Entwickler mit Schwerpunkt auf Web-,
+                E-Commerce- und Industrieanwendungen. Ich arbeite mich schnell in neue Technologien ein,
+                analysiere komplexe Anforderungen strukturiert und liefere zuverlässig stabile,
+                qualitativ hochwertige Lösungen. Zu meinen Stärken gehören Teamfähigkeit,
+                Verantwortungsbewusstsein, Detailorientierung und eine ruhige, lösungsorientierte Arbeitsweise
+                auch unter Druck.
+            </p>
+        </section>
+    </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+# dependencies
+node_modules/
+package-lock.json
+
+# output
+*.pdf
+
+# IDE
+.idea/
+.vscode/
+
+# logs
+*.log
+
+# macOS/Windows
+.DS_Store
+Thumbs.db
