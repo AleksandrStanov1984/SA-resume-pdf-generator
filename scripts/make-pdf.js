@@ -4,15 +4,21 @@ const puppeteer = require("puppeteer");
 
 (async () => {
     try {
-        // Папка для выходного PDF
-        const outputDir = path.resolve(__dirname, "../storage/pdf");
-        const pdfFile = path.join(outputDir, "resume-oleksandr-stanov.pdf");
+        // Path to HTML file (renamed to index.html)
+        const htmlPath = path.join(__dirname, "..", "index.html");
 
-        // HTML-файл
-        const htmlPath = path.resolve(__dirname, "../as_sv.html");
+        if (!fs.existsSync(htmlPath)) {
+            console.error("❌ HTML file not found:", htmlPath);
+            process.exit(1);
+        }
+
         const htmlUrl = "file://" + htmlPath.replace(/\\/g, "/");
 
-        // Создаём storage/pdf если нет
+        // Output folder
+        const outputDir = path.join(__dirname, "..", "storage", "pdf");
+        const pdfFile = path.join(outputDir, "resume-oleksandr-stanov.pdf");
+
+        // Create folder if missing
         if (!fs.existsSync(outputDir)) {
             fs.mkdirSync(outputDir, { recursive: true });
         }
@@ -33,12 +39,11 @@ const puppeteer = require("puppeteer");
         });
 
         await browser.close();
-
-        console.log("✅ PDF успешно создан:");
+        console.log("✅ PDF successfully generated:");
         console.log("→ " + pdfFile);
 
     } catch (err) {
-        console.error("❌ Ошибка создания PDF:", err);
+        console.error("❌ Error generating PDF:", err);
         process.exit(1);
     }
 })();

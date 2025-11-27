@@ -76,6 +76,21 @@ node scripts/make-pdf.js
 
 ---
 
+## 📄 PDF Preview
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/AleksandrStanov1984/SA-resume-pdf-generator/main/demo/resume-oleksandr-stanov-1.png" width="700" />
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/AleksandrStanov1984/SA-resume-pdf-generator/main/demo/resume-oleksandr-stanov-2.png" width="700" />
+</p>
+
+👉 Full PDF available here:  
+[resume-oleksandr-stanov.pdf](https://raw.githubusercontent.com/AleksandrStanov1984/SA-resume-pdf-generator/main/demo/resume-oleksandr-stanov.pdf)
+
+
+
 ## 📜 License
 
 MIT License

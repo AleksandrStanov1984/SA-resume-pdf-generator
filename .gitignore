@@ -4,6 +4,7 @@ package-lock.json
 
 # output
 *.pdf
+!demo/*.pdf   # ← разрешаем PDF внутри demo
 
 # IDE
 .idea/
